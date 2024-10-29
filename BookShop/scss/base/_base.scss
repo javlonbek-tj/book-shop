@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as vars;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Mulish', 'Helvetica Neue', sans-serif;
+  background-color: vars.$color-body;
+}
+
+ul {
+  list-style: none;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+img {
+  display: block;
+  width: 20rem;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}

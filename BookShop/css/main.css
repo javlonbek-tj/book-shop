@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "Mulish";
+  src: url("../assets/fonts/Mulish-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DynaPuff";
+  src: url("../assets/fonts/DynaPuff-Bold.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+  background-color: #eeeeee;
+}
+
+ul {
+  list-style: none;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+img {
+  display: block;
+  width: 20rem;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 2.4rem;
+}
+
+/* Header */
+.header {
+  height: 10vh;
+  background-color: #fff;
+}
+.header__top {
+  background-color: #3a3a5f;
+  height: 3vh;
+}
+.header__contacts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  font-size: 1.4rem;
+}
+.header__contacts-social, .header__contacts-phone {
+  color: #ffffff;
+}
+
+/* Navbar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7vh;
+}
+.nav__logo {
+  font-family: "DynaPuff", sans-serif;
+  font-size: 2.8rem;
+}
+.nav__search {
+  width: 30%;
+  border: 1px solid #3a3a5f;
+  padding: 1.2rem;
+  border-radius: 10rem;
+}
+.nav__search input {
+  width: 100%;
+  color: #3a3a5f;
+  font-size: 1.6rem;
+  font-family: "Mulish", sans-serif;
+}
+.nav__search input::placeholder {
+  font-size: 1.6rem;
+  font-family: "Mulish", sans-serif;
+}
+.nav__search input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+.nav__actions {
+  display: flex;
+  gap: 1.6rem;
+  font-size: 1.4rem;
+}
+.nav__cart, .nav__favourite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nav__icon {
+  font-size: 2rem;
+}
+
+/*# sourceMappingURL=main.css.map */

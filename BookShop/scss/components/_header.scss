@@ -1,0 +1,76 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+/* Header */
+.header {
+  height: 10vh;
+  background-color: #fff;
+
+  &__top {
+    background-color: vars.$color-primary;
+    height: 3vh;
+  }
+
+  &__contacts {
+    @include mix.flex-space-between;
+    height: 100%;
+    font-size: 1.4rem;
+
+    &-social,
+    &-phone {
+      color: vars.$color-white;
+    }
+  }
+}
+
+/* Navbar */
+.nav {
+  @include mix.flex-space-between;
+  height: 7vh;
+
+  &__logo {
+    font-family: 'DynaPuff', sans-serif;
+    font-size: 2.8rem;
+  }
+
+  &__search {
+    width: 30%;
+    border: 1px solid vars.$color-primary;
+    padding: 1.2rem;
+    border-radius: 10rem;
+
+    input {
+      width: 100%;
+      color: vars.$color-primary;
+      font-size: 1.6rem;
+      font-family: 'Mulish', sans-serif;
+
+      &::placeholder {
+        font-size: 1.6rem;
+        font-family: 'Mulish', sans-serif;
+      }
+
+      &::-webkit-search-cancel-button {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1.6rem;
+    font-size: 1.4rem;
+  }
+
+  &__cart,
+  &__favourite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__icon {
+    font-size: 2rem;
+  }
+}
+
