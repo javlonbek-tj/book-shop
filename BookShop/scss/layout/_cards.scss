@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+}
+
+.books {
+  flex-basis: 70%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1.2rem;
+}
+
+.book {
+  &__image {
+    width: 100%;
+    overflow: hidden;
+  }
+}

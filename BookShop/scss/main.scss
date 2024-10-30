@@ -3,4 +3,7 @@
 @use 'abstracts/mixins';
 @use 'base/base';
 @use 'base/utilities';
-@use 'components/header';
+@use 'layout/header';
+@use 'layout/overlay';
+@use 'layout/hero';
+@use 'layout/cards';

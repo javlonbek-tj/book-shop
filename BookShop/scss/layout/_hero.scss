@@ -1,0 +1,32 @@
+.hero {
+  padding-block: 3rem;
+  height: 45rem;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f5f9;
+    border-radius: 1.4rem;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    flex-basis: 62%;
+    padding: 4rem;
+  }
+
+  &__title {
+    font-size: 5.4rem;
+  }
+
+  &__subtitle {
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
+
+  &__img {
+    flex-basis: 40rem;
+  }
+}
