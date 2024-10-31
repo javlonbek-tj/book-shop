@@ -38,3 +38,44 @@ document.addEventListener('keydown', (e) => {
     hideMenu();
   }
 });
+
+// ==================== RENDERING BOOK ELEMENT ====================
+
+async function fetchBooks() {
+  const response = await fetch('../../books.json');
+  const data = await response.json();
+  return data;
+}
+
+async function renderBooks() {
+  const books = await fetchBooks();
+
+  const booksContainer = document.getElementById('books');
+  const fragment = document.createDocumentFragment();
+
+  books.forEach((book) => {
+    const bookItem = document.createElement('div');
+    bookItem.classList.add('book');
+
+    const truncatedTitle = book.title.length > 50 ? book.title.slice(0, 50) + '...' : book.title;
+
+    bookItem.innerHTML = `
+    <img src="assets/images/${book.imageLink}" alt="${book.title}" class="book__image" />
+    <div class="book__content">
+      <h2 class="book__title">${truncatedTitle}</h2>
+      <h3 class="book__author">${book.author}</h3>
+      <p class="book__price">Price: $${book.price}</p>
+      <div class="book__actions">
+        <button class="book__btn">Add to bag</button>
+        <button class="book__btn book__btn--more">Show more</button>
+      </div>
+    </div>
+  `;
+
+    fragment.append(bookItem);
+  });
+
+  booksContainer.append(fragment);
+}
+
+renderBooks();
