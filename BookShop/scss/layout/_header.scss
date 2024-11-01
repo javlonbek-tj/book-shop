@@ -6,6 +6,8 @@
   height: 10vh;
   background-color: #fff;
   border-bottom: 1px solid #e4dede;
+  position: sticky;
+  top: 0;
 
   &__top {
     background-color: vars.$color-primary;

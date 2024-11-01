@@ -47,6 +47,10 @@ async function fetchBooks() {
   return data;
 }
 
+function truncateTitle(length, title) {
+  return title.length > length ? title.slice(0, length) + '...' : title;
+}
+
 async function renderBooks() {
   const books = await fetchBooks();
 
@@ -56,8 +60,7 @@ async function renderBooks() {
   books.forEach((book) => {
     const bookItem = document.createElement('div');
     bookItem.classList.add('book');
-
-    const truncatedTitle = book.title.length > 50 ? book.title.slice(0, 50) + '...' : book.title;
+    const truncatedTitle = truncateTitle(38, book.title);
 
     bookItem.innerHTML = `
     <img src="assets/images/${book.imageLink}" alt="${book.title}" class="book__image" />
@@ -66,7 +69,7 @@ async function renderBooks() {
       <h3 class="book__author">${book.author}</h3>
       <p class="book__price">Price: $${book.price}</p>
       <div class="book__actions">
-        <button class="book__btn">Add to bag</button>
+        <button class="book__btn book__btn--add">Add to bag</button>
         <button class="book__btn book__btn--more">Show more</button>
       </div>
     </div>
@@ -79,3 +82,56 @@ async function renderBooks() {
 }
 
 renderBooks();
+
+// ==================== ADDING TO CART ====================
+
+const bookCatalogContainer = document.getElementById('books');
+const cartsContainer = document.getElementById('carts');
+
+function addToCart(book) {
+  const fragment = document.createDocumentFragment();
+
+  const cartItem = document.createElement('div');
+  cartItem.classList.add('cart');
+
+  const truncatedTitle = truncateTitle(38, book.title);
+
+  cartItem.innerHTML = `
+    <img src="${book.imageLink}" alt="${book.title}" class="cart__image" />
+      <div class="cart__info">
+        <h2 class="cart__title">${truncatedTitle}</h2>
+        <h3 class="cart__author">${book.author}</h3>
+        <p class="cart__price">Price: $${book.price}</p>
+        <div class="cart__actions">
+        <div class="cart__btns">
+        <button class="cart__icon cart__icon--minus"><i class="fa-solid fa-minus"></i></button>
+        <span class="cart__qty">1</span>
+        <button class="cart__icon cart__icon--plus"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <button class="cart__remove"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+  `;
+
+  cartItem.querySelector('.cart__remove').addEventListener('click', () => {
+    cartItem.remove();
+  });
+
+  fragment.append(cartItem);
+
+  cartsContainer.append(fragment);
+}
+
+bookCatalogContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('book__btn--add')) {
+    const bookElement = event.target.closest('.book');
+    const book = {
+      title: bookElement.querySelector('.book__title').textContent,
+      author: bookElement.querySelector('.book__author').textContent,
+      price: bookElement.querySelector('.book__price').textContent.replace('Price: $', ''),
+      imageLink: bookElement.querySelector('.book__image').src,
+    };
+
+    addToCart(book);
+  }
+});

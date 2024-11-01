@@ -96,15 +96,4 @@
   }
 }
 
-.bags {
-  flex: 1 0 30rem;
-  background-color: vars.$color-secondary;
-  padding: 1.2rem 2rem;
-  border-radius: 1.4rem;
 
-  &__title {
-    font-size: 2.4rem;
-    text-align: center;
-    color: vars.$color-dark;
-  }
-}
