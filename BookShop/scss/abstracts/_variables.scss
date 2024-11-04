@@ -1,12 +1,18 @@
 /* Colors */
 $color-white: #ffffff;
+
 $color-primary: #3a3a5f;
+$color-primary-light: #515183;
 $color-secondary: #f1f5f9;
 $color-secondary-dark: #dadee2;
+
 $color-dark: #333333;
 $color-light: #e0e0e0;
 $color-body: #fdfbfb;
 
+$color-danger: #ac3636;
+
 /* Z-index */
 $z-index-overlay: 90;
 $z-index-menu: 100;
+$z-index-modal: 1000;

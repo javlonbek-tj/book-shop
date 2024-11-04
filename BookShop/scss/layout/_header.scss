@@ -3,15 +3,13 @@
 
 /* Header */
 .header {
-  height: 10vh;
+  min-height: 10rem;
   background-color: #fff;
   border-bottom: 1px solid #e4dede;
-  position: sticky;
-  top: 0;
 
   &__top {
     background-color: vars.$color-primary;
-    height: 3vh;
+    height: 3rem;
   }
 
   &__contacts {
@@ -29,7 +27,7 @@
 /* Navbar */
 .nav {
   @include mix.flex-space-between;
-  height: 7vh;
+  height: 7rem;
 
   &__logo {
     font-family: 'DynaPuff', sans-serif;

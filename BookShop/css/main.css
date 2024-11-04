@@ -63,15 +63,13 @@ a {
 
 /* Header */
 .header {
-  height: 10vh;
+  min-height: 10rem;
   background-color: #fff;
   border-bottom: 1px solid #e4dede;
-  position: sticky;
-  top: 0;
 }
 .header__top {
   background-color: #3a3a5f;
-  height: 3vh;
+  height: 3rem;
 }
 .header__contacts {
   display: flex;
@@ -89,7 +87,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 7vh;
+  height: 7rem;
 }
 .nav__logo {
   font-family: "DynaPuff", sans-serif;
@@ -310,25 +308,32 @@ a {
   border: 1px solid #3a3a5f;
 }
 
-.carts {
+.cart {
+  position: sticky;
+  top: 12rem;
   flex: 1 0 35rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-self: flex-start;
-  max-height: 50rem;
+  align-items: center;
+  max-height: 60rem;
   overflow-y: scroll;
   padding: 1.2rem 2rem;
   border-radius: 1.4rem;
   background-color: #f1f5f9;
 }
-.carts__title {
+.cart__header {
   font-size: 2.4rem;
   text-align: center;
   color: #333333;
 }
-
-.cart {
+.cart__items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.cart__item {
   display: flex;
   justify-content: space-between;
   gap: 1.2rem;
@@ -381,10 +386,62 @@ a {
   font-size: 1.6rem;
 }
 .cart__remove {
-  color: rgb(172, 54, 54);
+  color: #ac3636;
   font-size: 1.4rem;
   cursor: pointer;
   background: none;
+}
+.cart__total {
+  font-size: 2.4rem;
+}
+.cart__order {
+  font-size: 1.6rem;
+  background-color: #3a3a5f;
+  padding: 0.8rem 1.6rem;
+  border-radius: 10rem;
+  color: #ffffff;
+  transition: all 0.4s ease;
+}
+.cart__order:hover {
+  background-color: #515183;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  transition: all 0.4s ease;
+}
+.modal__container {
+  width: 90rem;
+  height: 50rem;
+  background-color: #ffffff;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.05);
+  border-radius: 9px;
+  overflow: hidden;
+}
+.modal__close-button {
+  position: absolute;
+  top: -5rem;
+  right: -4rem;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.modal__close-button:hover {
+  background-color: var(--color-primary);
+}
+.modal__close-button i {
+  display: inline-block;
+  text-align: center;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 /*# sourceMappingURL=main.css.map */

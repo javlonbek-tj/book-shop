@@ -1,0 +1,43 @@
+@use '../abstracts/variables' as vars;
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  transition: all 0.4s ease;
+
+  &__container {
+    width: 90rem;
+    height: 50rem;
+    background-color: vars.$color-white;
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.05);
+    border-radius: 9px;
+    overflow: hidden;
+  }
+
+  &__close-button {
+    position: absolute;
+    top: -5rem;
+    right: -4rem;
+    width: 5.2rem;
+    height: 5.2rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  &__close-button:hover {
+    background-color: var(--color-primary);
+  }
+
+  &__close-button i {
+    display: inline-block;
+    text-align: center;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
