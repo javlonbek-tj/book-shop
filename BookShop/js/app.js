@@ -6,13 +6,21 @@ function truncateTitle(length, title) {
   return title.length > length ? title.slice(0, length) + '...' : title;
 }
 
-async function renderBooks() {
+const searchBars = document.querySelectorAll('.search-bar');
+
+async function renderBooks(searchQuery = '') {
   const books = await fetchBooks();
 
   const booksContainer = document.getElementById('books');
+  booksContainer.innerHTML = '';
+
   const fragment = document.createDocumentFragment();
 
-  books.forEach((book) => {
+  const filteredBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  filteredBooks.forEach((book) => {
     const bookItem = document.createElement('div');
     bookItem.classList.add('book');
     bookItem.setAttribute('draggable', 'true');
@@ -52,6 +60,13 @@ async function renderBooks() {
 
 renderBooks();
 
+searchBars.forEach((searchBar) => {
+  searchBar.addEventListener('input', (e) => {
+    const searchQuery = e.target.value;
+    renderBooks(searchQuery);
+  });
+});
+
 // ==================== ADDING TO CART ====================
 
 const bookCatalogContainer = document.getElementById('books');
@@ -63,7 +78,9 @@ const cartOrderBtn = document.querySelector('.cart__order');
 function addToCart(book) {
   let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
-  const existedCartProductIndex = cartProducts.findIndex((cart) => cart.id.toString() === book.id.toString());
+  const existedCartProductIndex = cartProducts.findIndex(
+    (cart) => cart.id.toString() === book.id.toString()
+  );
   let newQuantity = 1;
 
   if (existedCartProductIndex !== -1) {
@@ -129,7 +146,9 @@ function renderCarts() {
   `;
 
     cartItem.querySelector('.cart__remove').addEventListener('click', () => {
-      cartProducts = cartProducts.filter((cartProduct) => cartProduct.id.toString() !== book.id.toString());
+      cartProducts = cartProducts.filter(
+        (cartProduct) => cartProduct.id.toString() !== book.id.toString()
+      );
 
       localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
 
@@ -155,7 +174,9 @@ bookCatalogContainer.addEventListener('click', (event) => {
       id: bookElement.dataset.id,
       title: bookElement.querySelector('.book__title').textContent,
       author: bookElement.querySelector('.book__author').textContent,
-      price: bookElement.querySelector('.book__price').textContent.replace('Price: $', ''),
+      price: bookElement
+        .querySelector('.book__price')
+        .textContent.replace('Price: $', ''),
       imageLink: bookElement.querySelector('.book__image').src,
     };
 

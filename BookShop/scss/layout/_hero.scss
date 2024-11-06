@@ -3,6 +3,10 @@
 .hero {
   padding-block: 3rem;
 
+  @media screen and (max-width: 32em) {
+    padding-block: 2rem;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
