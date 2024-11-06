@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="module" src="js/toggleMune.js" defer></script>
+    <script type="module" src="js/modal.js" defer></script>
+    <script type="module" src="js/app.js" defer></script>
+    <title>Book Shop</title>
+  </head>
+  <body>
+    <!--==================== HEADER ====================-->
+    <header id="header" class="header">
+      <div class="header__top">
+        <div class="container header__contacts">
+          <a href="https://t.me/javlonbek_0405" class="header__contacts-social">
+            <i class="fa-brands fa-telegram header__social-icon"></i>
+            <span class="header__social-text">Telegram</span>
+          </a>
+
+          <a href="tel: +998900048114" class="header__contacts-phone">
+            <i class="fa-solid fa-phone header__phone-icon"></i>
+            <span class="header__phone-text">+998 90 004 81 14</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navbar -->
+      <nav class="container nav">
+        <a href="" class="nav__logo"><h1>Book-Shop</h1></a>
+
+        <div class="nav__search">
+          <input type="search" class="search-bar" placeholder="Search" />
+        </div>
+
+        <div class="nav__actions" id="nav-actions">
+          <div class="nav__cart">
+            <i class="fa-solid fa-cart-shopping nav__icon"></i>
+            <span class="nav__cart-text">Cart</span>
+          </div>
+
+          <div class="nav__favourite">
+            <i class="fa-regular fa-heart nav__icon"></i>
+            <span class="nav__favourite-text">Favourites</span>
+          </div>
+        </div>
+
+        <div class="nav__burger" id="nav-burger">
+          <span class="nav__burger-line"></span>
+          <span class="nav__burger-line"></span>
+          <span class="nav__burger-line"></span>
+        </div>
+      </nav>
+    </header>
+
+    <!--==================== SECTION HERO ====================-->
+
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="mobile-search container">
+          <input type="search" class="search-bar" placeholder="Search" />
+        </div>
+
+        <div class="hero__content">
+          <div class="hero__header">
+            <h2 class="hero__title">
+              Discover a World of Books at Your Fingertips!
+            </h2>
+            <h3 class="hero__subtitle">
+              Dive into stories, expand your knowledge, and unlock endless
+              adventures—all in one place.
+            </h3>
+          </div>
+          <div class="hero__img">
+            <img src="assets/svgs/hero-1.svg" alt="Book" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== SECTION MAIN====================-->
+
+    <main class="main container">
+      <div class="main-section">
+        <div class="catalog" id="catalog">
+          <h2 class="catalog__title">Book Catalog</h2>
+          <div class="books" id="books"></div>
+        </div>
+
+        <aside class="cart" id="cart">
+          <h2 class="cart__header">Your cart</h2>
+          <div class="cart__items" id="cart-items"></div>
+          <p class="cart__total hidden" id="cart-total">Total $0</p>
+          <a href="pages/checkout.html" class="cart__order hidden"
+            >Confirm order</a
+          >
+        </aside>
+      </div>
+    </main>
+
+    <!--==================== MODAL ====================-->
+
+    <div class="modal hidden">
+      <div class="modal__container"></div>
+    </div>
+
+    <!--==================== OVERLAY ====================-->
+    <div class="overlay hidden" id="overlay"></div>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <script type="module" src="../js/toggleMune.js" defer></script>
+    <script type="module" src="../js/modal.js" defer></script>
+    <script type="module" src="../js/checkout.js" defer></script>
+    <title>Book Shop</title>
+  </head>
+  <body>
+    <!--==================== HEADER ====================-->
+
+    <header id="header" class="header">
+      <div class="header__top">
+        <div class="container header__contacts">
+          <a href="https://t.me/javlonbek_0405" class="header__contacts-social">
+            <i class="fa-brands fa-telegram header__social-icon"></i>
+            <span class="header__social-text">Telegram</span>
+          </a>
+
+          <a href="tel: +998900048114" class="header__contacts-phone">
+            <i class="fa-solid fa-phone header__phone-icon"></i>
+            <span class="header__phone-text">+998 90 004 81 14</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navbar -->
+      <nav class="container nav">
+        <a href="../index.html" class="nav__logo"><h1>Book-Shop</h1></a>
+
+
+        <div class="nav__actions" id="nav-actions">
+          <div class="nav__cart">
+            <i class="fa-solid fa-cart-shopping nav__icon"></i>
+            <span class="nav__cart-text">Cart</span>
+          </div>
+
+          <div class="nav__favourite">
+            <i class="fa-regular fa-heart nav__icon"></i>
+            <span class="nav__favourite-text">Favourites</span>
+          </div>
+        </div>
+
+        <div class="nav__burger" id="nav-burger">
+          <span class="nav__burger-line"></span>
+          <span class="nav__burger-line"></span>
+          <span class="nav__burger-line"></span>
+        </div>
+      </nav>
+    </header>
+
+    <!--==================== SECTION MAIN====================-->
+
+    <main class="main container">
+      <section class="checkout" id="checkout">
+        <div class="checkout__delivery-info" id="delivery-info">
+          <h2 class="checkout__header">Delivery Information</h2>
+
+          <form class="checkout__form" id="checkout-form">
+            <div class="checkout__input-row">
+              <div class="checkout__input-group">
+                <label for="name" class="checkout__label">Name</label>
+                <input type="text" id="name" class="checkout__input" required minlength="4" />
+                <span class="checkout__error" id="name-error"></span>
+              </div>
+              <div class="checkout__input-group">
+                <label for="surname" class="checkout__label">Surname</label>
+                <input type="text" id="surname" class="checkout__input" required minlength="5" />
+                <span class="checkout__error" id="surname-error"></span>
+              </div>
+            </div>
+
+            <div class="checkout__input-row">
+              <div class="checkout__input-group">
+                <label for="street" class="checkout__label">Street</label>
+                <input type="text" id="street" class="checkout__input" required minlength="5" />
+                <span class="checkout__error" id="street-error"></span>
+              </div>
+              <div class="checkout__input-group">
+                <label for="house" class="checkout__label">House number</label>
+                <input type="number" id="house" class="checkout__input" required min="1" />
+                <span class="checkout__error" id="house-error"></span>
+              </div>
+            </div>
+
+            <div class="checkout__input-row">
+              <div class="checkout__input-group">
+                <label for="flat" class="checkout__label">Flat number</label>
+                <input type="text" id="flat" class="checkout__input" required pattern="^[1-9][0-9]*(-[0-9]+)*$" />
+                <span class="checkout__error" id="flat-error"></span>
+              </div>
+              <div class="checkout__input-group">
+                <label for="dates" class="checkout__label">Dates</label>
+                <input type="date" id="dates" class="checkout__input checkout__input--date" required />
+                <span class="checkout__error" id="dates-error"></span>
+              </div>
+            </div>
+
+            <div class="checkout__payment-method">
+              <h3 class="checkout__title">Payment method</h3>
+              <label class="checkout__option">
+                <input type="radio" name="payment" required />
+                <span class="checkout__option-text">Cash</span>
+              </label>
+              <label class="checkout__option">
+                <input type="radio" name="payment" required />
+                <span class="checkout__option-text">Card</span>
+              </label>
+              <span class="checkout__error" id="payment-error"></span>
+            </div>
+
+            <div class="checkout__gifts">
+              <div class="checkout__gifts-header">
+                <h2 class="checkout__title">Choose 2 gifts</h2>
+                <div class="checkout__toggle">
+                  <input type="checkbox" id="gifts-toggle" class="checkout__toggle-input" />
+                  <label for="gifts-toggle" class="checkout__toggle-label"></label>
+                </div>
+              </div>
+
+              <div class="checkout__gift-options hidden" id="gift-options">
+                <div class="checkout__gift-option">
+                  <input type="checkbox" id="gift-pack" class="checkout__gift-input" />
+                  <label for="gift-pack">Pack as a gift</label>
+                </div>
+
+                <div class="checkout__gift-option">
+                  <input type="checkbox" id="gift-postcard" class="checkout__gift-input" />
+                  <label for="gift-postcard">Add postcard</label>
+                </div>
+
+                <div class="checkout__gift-option">
+                  <input type="checkbox" id="gift-discount" class="checkout__gift-input" />
+                  <label for="gift-discount">Provide 2% discount for the next time</label>
+                </div>
+
+                <div class="checkout__gift-option">
+                  <input type="checkbox" id="gift-pen" class="checkout__gift-input" />
+                  <label for="gift-pen">Branded pen or pencil</label>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" id="complete-button" class="checkout__btn" disabled>Complete</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!--==================== MODAL ====================-->
+
+    <div class="modal hidden">
+      <div class="modal__container"></div>
+    </div>
+
+    <!--==================== OVERLAY ====================-->
+    <div class="overlay hidden" id="overlay"></div>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+@use '../abstracts/variables' as vars;
+
+.cart {
+  position: sticky;
+  top: 12rem;
+  flex: 1 0 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-self: flex-start;
+  align-items: center;
+  max-height: 60rem;
+  overflow-y: scroll;
+  padding: 1.2rem 2rem;
+  border-radius: 1.4rem;
+  background-color: vars.$color-secondary;
+
+  @media screen and (max-width: 45em) {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__header {
+    font-size: 2.4rem;
+    text-align: center;
+    color: vars.$color-dark;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    background-color: vars.$color-white;
+    border: 1px solid vars.$color-light;
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.05);
+  }
+
+  &__image {
+    width: 10rem;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.8rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__author {
+    font-size: 1.2rem;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__price {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  &__icon {
+    border: 1px solid vars.$color-primary;
+    border-radius: 50%;
+    padding: 0.2rem 0.4rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background-color: vars.$color-primary;
+      color: vars.$color-white;
+      transform: scale(1.1);
+    }
+  }
+
+  &__btns {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__qty {
+    font-size: 1.6rem;
+  }
+
+  &__remove {
+    color: vars.$color-danger;
+    font-size: 1.4rem;
+    cursor: pointer;
+    background: none;
+  }
+
+  &__total {
+    font-size: 2.4rem;
+  }
+
+  &__order {
+    font-size: 1.6rem;
+    background-color: vars.$color-primary;
+    padding: 0.8rem 1.6rem;
+    border-radius: 10rem;
+    color: vars.$color-white;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background-color: vars.$color-primary-light;
+    }
+  }
+}

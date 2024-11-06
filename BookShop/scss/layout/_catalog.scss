@@ -1,0 +1,118 @@
+@use '../abstracts/variables' as vars;
+
+.main-section {
+  display: flex;
+  gap: 4rem;
+  padding: 3rem 2.4rem;
+
+  @media screen and (max-width: 45em) {
+    flex-direction: column-reverse;
+  }
+}
+
+.catalog__title {
+  font-size: 2.4rem;
+  padding-bottom: 2rem;
+  color: vars.$color-dark;
+}
+
+.books {
+  flex-basis: 75%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(20rem, 28rem));
+  column-gap: 2rem;
+  row-gap: 4rem;
+
+  @media screen and (max-width: 76em) {
+    grid-template-columns: repeat(2, minmax(26rem, 28rem));
+  }
+
+  @media screen and (max-width: 62em) {
+    grid-template-columns: repeat(1, minmax(26rem, 28rem));
+  }
+
+  @media screen and (max-width: 45em) {
+    grid-template-columns: repeat(2, minmax(26rem, 28rem));
+  }
+
+  @media screen and (max-width: 40em) {
+    grid-template-columns: repeat(1, minmax(26rem, 28rem));
+    justify-content: center;
+  }
+}
+
+.book {
+  border-radius: 0.8rem;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  transition: all 0.4s ease;
+  border: 1px solid vars.$color-secondary-dark;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.15);
+  }
+
+  &__image {
+    width: 100%;
+    overflow: hidden;
+    object-fit: contain;
+    border-radius: 0.8rem 0.8rem 0 0;
+    height: 20rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1rem 1.2rem;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    min-height: 5rem;
+  }
+
+  &__author {
+    font-size: 1.6rem;
+    font-weight: normal;
+  }
+
+  &__price {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.8rem;
+  }
+
+  &__btn {
+    padding: 0.8rem 1.4rem;
+    border-radius: 0.6rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    background-color: vars.$color-primary;
+    color: vars.$color-white;
+    border: 1px solid vars.$color-primary;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background: none;
+      color: vars.$color-primary;
+    }
+
+    &--more {
+      background: none;
+      color: vars.$color-dark;
+      transition: all 0.4s ease;
+      border: 1px solid vars.$color-white;
+
+      &:hover {
+        border: 1px solid vars.$color-primary;
+      }
+    }
+  }
+}
