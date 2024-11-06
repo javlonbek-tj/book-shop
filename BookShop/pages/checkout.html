@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/all.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/icons/favicon.ico"
+    />
     <script type="module" src="../js/toggleMune.js" defer></script>
     <script type="module" src="../js/modal.js" defer></script>
     <script type="module" src="../js/checkout.js" defer></script>
@@ -31,7 +37,6 @@
       <!-- Navbar -->
       <nav class="container nav">
         <a href="../index.html" class="nav__logo"><h1>Book-Shop</h1></a>
-
 
         <div class="nav__actions" id="nav-actions">
           <div class="nav__cart">
@@ -64,12 +69,24 @@
             <div class="checkout__input-row">
               <div class="checkout__input-group">
                 <label for="name" class="checkout__label">Name</label>
-                <input type="text" id="name" class="checkout__input" required minlength="4" />
+                <input
+                  type="text"
+                  id="name"
+                  class="checkout__input"
+                  required
+                  minlength="4"
+                />
                 <span class="checkout__error" id="name-error"></span>
               </div>
               <div class="checkout__input-group">
                 <label for="surname" class="checkout__label">Surname</label>
-                <input type="text" id="surname" class="checkout__input" required minlength="5" />
+                <input
+                  type="text"
+                  id="surname"
+                  class="checkout__input"
+                  required
+                  minlength="5"
+                />
                 <span class="checkout__error" id="surname-error"></span>
               </div>
             </div>
@@ -77,12 +94,24 @@
             <div class="checkout__input-row">
               <div class="checkout__input-group">
                 <label for="street" class="checkout__label">Street</label>
-                <input type="text" id="street" class="checkout__input" required minlength="5" />
+                <input
+                  type="text"
+                  id="street"
+                  class="checkout__input"
+                  required
+                  minlength="5"
+                />
                 <span class="checkout__error" id="street-error"></span>
               </div>
               <div class="checkout__input-group">
                 <label for="house" class="checkout__label">House number</label>
-                <input type="number" id="house" class="checkout__input" required min="1" />
+                <input
+                  type="number"
+                  id="house"
+                  class="checkout__input"
+                  required
+                  min="1"
+                />
                 <span class="checkout__error" id="house-error"></span>
               </div>
             </div>
@@ -90,12 +119,23 @@
             <div class="checkout__input-row">
               <div class="checkout__input-group">
                 <label for="flat" class="checkout__label">Flat number</label>
-                <input type="text" id="flat" class="checkout__input" required pattern="^[1-9][0-9]*(-[0-9]+)*$" />
+                <input
+                  type="text"
+                  id="flat"
+                  class="checkout__input"
+                  required
+                  pattern="^[1-9][0-9]*(-[0-9]+)*$"
+                />
                 <span class="checkout__error" id="flat-error"></span>
               </div>
               <div class="checkout__input-group">
                 <label for="dates" class="checkout__label">Dates</label>
-                <input type="date" id="dates" class="checkout__input checkout__input--date" required />
+                <input
+                  type="date"
+                  id="dates"
+                  class="checkout__input checkout__input--date"
+                  required
+                />
                 <span class="checkout__error" id="dates-error"></span>
               </div>
             </div>
@@ -117,35 +157,67 @@
               <div class="checkout__gifts-header">
                 <h2 class="checkout__title">Choose 2 gifts</h2>
                 <div class="checkout__toggle">
-                  <input type="checkbox" id="gifts-toggle" class="checkout__toggle-input" />
-                  <label for="gifts-toggle" class="checkout__toggle-label"></label>
+                  <input
+                    type="checkbox"
+                    id="gifts-toggle"
+                    class="checkout__toggle-input"
+                  />
+                  <label
+                    for="gifts-toggle"
+                    class="checkout__toggle-label"
+                  ></label>
                 </div>
               </div>
 
               <div class="checkout__gift-options hidden" id="gift-options">
                 <div class="checkout__gift-option">
-                  <input type="checkbox" id="gift-pack" class="checkout__gift-input" />
+                  <input
+                    type="checkbox"
+                    id="gift-pack"
+                    class="checkout__gift-input"
+                  />
                   <label for="gift-pack">Pack as a gift</label>
                 </div>
 
                 <div class="checkout__gift-option">
-                  <input type="checkbox" id="gift-postcard" class="checkout__gift-input" />
+                  <input
+                    type="checkbox"
+                    id="gift-postcard"
+                    class="checkout__gift-input"
+                  />
                   <label for="gift-postcard">Add postcard</label>
                 </div>
 
                 <div class="checkout__gift-option">
-                  <input type="checkbox" id="gift-discount" class="checkout__gift-input" />
-                  <label for="gift-discount">Provide 2% discount for the next time</label>
+                  <input
+                    type="checkbox"
+                    id="gift-discount"
+                    class="checkout__gift-input"
+                  />
+                  <label for="gift-discount"
+                    >Provide 2% discount for the next time</label
+                  >
                 </div>
 
                 <div class="checkout__gift-option">
-                  <input type="checkbox" id="gift-pen" class="checkout__gift-input" />
+                  <input
+                    type="checkbox"
+                    id="gift-pen"
+                    class="checkout__gift-input"
+                  />
                   <label for="gift-pen">Branded pen or pencil</label>
                 </div>
               </div>
             </div>
 
-            <button type="submit" id="complete-button" class="checkout__btn" disabled>Complete</button>
+            <button
+              type="submit"
+              id="complete-button"
+              class="checkout__btn"
+              disabled
+            >
+              Complete
+            </button>
           </form>
         </div>
       </section>
