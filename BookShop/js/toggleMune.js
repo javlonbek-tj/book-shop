@@ -27,7 +27,6 @@ if (stickyState === 'false') {
   headerEls.forEach((headerEl) => headerEl.classList.add('header__sticky'));
 }
 
-// Event Listeners
 navBurgerEls.forEach((navBurgerEl) =>
   navBurgerEl.addEventListener('click', showMenu)
 );
