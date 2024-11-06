@@ -1,14 +1,15 @@
 @use '../abstracts/variables' as vars;
 
-
 /* Header */
 .header {
   min-height: 10rem;
   background-color: vars.$color-white;
   border-bottom: 1px solid vars.$color-secondary-dark;
-  position: sticky;
-  top: 0;
-  z-index: vars.$z-index-header;
+
+  &__sticky {
+    position: sticky;
+    top: 0;
+  }
 
   &__top {
     background-color: vars.$color-primary;
@@ -93,22 +94,11 @@
     font-size: 2rem;
   }
 
-  &__burger {
+  &__burger,
+  &__close {
     display: none;
-    flex-direction: column;
-    gap: 0.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
-
-    &-line {
-      width: 2.2rem;
-      height: 0.2rem;
-      background-color: vars.$color-primary;
-      transition: all 0.4s ease;
-
-      &:nth-child(2) {
-        opacity: 1;
-      }
-    }
   }
 }
 
@@ -144,25 +134,14 @@
     }
 
     &__burger {
-      display: flex;
-      z-index: vars.$z-index-menu;
+      display: block;
+    }
 
-      &--open {
-        .nav__burger-line {
-          background-color: vars.$color-white;
-          &:nth-child(1) {
-            transform: rotate(-45deg) translate(-0.5rem, 0.5rem);
-          }
-
-          &:nth-child(2) {
-            opacity: 0;
-          }
-
-          &:nth-child(3) {
-            transform: rotate(45deg) translate(-0.5rem, -0.5rem);
-          }
-        }
-      }
+    &__close {
+      display: block;
+      position: absolute;
+      top: 3rem;
+      right: 3rem;
     }
   }
 }

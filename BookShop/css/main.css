@@ -66,9 +66,10 @@ a {
   min-height: 10rem;
   background-color: #ffffff;
   border-bottom: 1px solid #dadee2;
+}
+.header__sticky {
   position: sticky;
   top: 0;
-  z-index: 120;
 }
 .header__top {
   background-color: #3a3a5f;
@@ -143,20 +144,10 @@ a {
 .nav__icon {
   font-size: 2rem;
 }
-.nav__burger {
+.nav__burger, .nav__close {
   display: none;
-  flex-direction: column;
-  gap: 0.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
-}
-.nav__burger-line {
-  width: 2.2rem;
-  height: 0.2rem;
-  background-color: #3a3a5f;
-  transition: all 0.4s ease;
-}
-.nav__burger-line:nth-child(2) {
-  opacity: 1;
 }
 
 @media screen and (max-width: 45em) {
@@ -177,7 +168,7 @@ a {
     gap: 5rem;
     font-size: 2.8rem;
     transition: right 0.4s ease-in-out;
-    z-index: 110;
+    z-index: 1000;
   }
   .nav__actions.show-menu {
     right: 0;
@@ -186,20 +177,13 @@ a {
     display: none;
   }
   .nav__burger {
-    display: flex;
-    z-index: 110;
+    display: block;
   }
-  .nav__burger--open .nav__burger-line {
-    background-color: #ffffff;
-  }
-  .nav__burger--open .nav__burger-line:nth-child(1) {
-    transform: rotate(-45deg) translate(-0.5rem, 0.5rem);
-  }
-  .nav__burger--open .nav__burger-line:nth-child(2) {
-    opacity: 0;
-  }
-  .nav__burger--open .nav__burger-line:nth-child(3) {
-    transform: rotate(45deg) translate(-0.5rem, -0.5rem);
+  .nav__close {
+    display: block;
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
   }
 }
 .overlay {
@@ -210,7 +194,7 @@ a {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
-  z-index: 90;
+  z-index: 800;
 }
 
 .hero {
@@ -545,7 +529,7 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 900;
   transition: all 0.4s ease;
 }
 .modal__container {
