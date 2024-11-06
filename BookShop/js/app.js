@@ -1,64 +1,4 @@
-
-// ==================== MODAL WINDOW ====================
-
-const modalContainer = document.querySelector('.modal__container');
-const modal = document.querySelector('.modal');
-const booksEl = document.getElementById('books');
-
-async function fetchBooks() {
-  const response = await fetch('../../books.json');
-  const data = await response.json();
-  return data;
-}
-
-async function showModal(bookId) {
-  const books = await fetchBooks();
-  const book = books.find((book) => book.id.toString() === bookId.toString());
-
-  if (book) {
-    modalContainer.innerHTML = '';
-
-    const fragment = document.createDocumentFragment();
-    const bookItem = document.createElement('div');
-    const buttonEl = document.createElement('button');
-    bookItem.classList.add('modal__content');
-    buttonEl.classList.add('modal__close-button');
-
-    buttonEl.innerHTML = `<i class='fa-solid fa-x'></i>`;
-
-    buttonEl.addEventListener('click', closeModal);
-
-    bookItem.innerHTML = `
-      <h2 class="modal__header">${book.title}</h2>
-      <p class="modal__desc">${book.description}</p>
-    `;
-
-    fragment.append(buttonEl, bookItem);
-    modalContainer.append(fragment);
-  }
-}
-
-const closeModal = function () {
-  overlay.classList.add('hidden');
-  modal.classList.add('hidden');
-  document.body.classList.remove('no-scroll');
-};
-
-booksEl.addEventListener('click', (e) => {
-  if (e.target.closest('.book__btn--more')) {
-    e.preventDefault();
-    modal.classList.remove('hidden');
-    overlay.classList.remove('hidden');
-    document.body.classList.add('no-scroll');
-    const book = e.target.closest('.book');
-    if (book) {
-      const bookId = book.getAttribute('data-id');
-      showModal(bookId);
-    }
-  }
-});
-
-overlay.addEventListener('click', closeModal);
+import { fetchBooks } from './modal.js';
 
 // ==================== RENDERING BOOK ELEMENT ====================
 
@@ -118,6 +58,7 @@ const bookCatalogContainer = document.getElementById('books');
 const cartSection = document.getElementById('cart');
 const cartsEl = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
+const cartOrderBtn = document.querySelector('.cart__order');
 
 function addToCart(book) {
   let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
@@ -153,12 +94,16 @@ function renderCarts() {
   cartsEl.innerHTML = '';
   let cartTotalSum = 0;
 
+  if (cartProducts.length === 0) {
+    cartTotal.classList.add('hidden');
+    cartOrderBtn.classList.add('hidden');
+    return;
+  }
+
   cartProducts.forEach((book) => {
     const fragment = document.createDocumentFragment();
 
     cartTotalSum += book.price * book.qty;
-
-    cartTotal.textContent = `Total: $${cartTotalSum}`;
 
     const cartItem = document.createElement('div');
     cartItem.classList.add('cart__item');
@@ -184,17 +129,21 @@ function renderCarts() {
   `;
 
     cartItem.querySelector('.cart__remove').addEventListener('click', () => {
-      cartItem.remove();
-
       cartProducts = cartProducts.filter((cartProduct) => cartProduct.id.toString() !== book.id.toString());
 
       localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+
+      renderCarts();
     });
 
     fragment.append(cartItem);
 
     cartsEl.append(fragment);
   });
+
+  cartTotal.textContent = `Total: $${cartTotalSum}`;
+  cartTotal.classList.remove('hidden');
+  cartOrderBtn.classList.remove('hidden');
 }
 
 renderCarts();

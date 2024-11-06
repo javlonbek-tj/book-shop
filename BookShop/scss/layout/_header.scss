@@ -4,8 +4,8 @@
 /* Header */
 .header {
   min-height: 10rem;
-  background-color: #fff;
-  border-bottom: 1px solid #e4dede;
+  background-color: vars.$color-white;
+  border-bottom: 1px solid vars.$color-secondary-dark;
 
   &__top {
     background-color: vars.$color-primary;
@@ -15,7 +15,7 @@
   &__contacts {
     @include mix.flex-space-between;
     height: 100%;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 
     &-social,
     &-phone {
@@ -32,6 +32,10 @@
   &__logo {
     font-family: 'DynaPuff', sans-serif;
     font-size: 2.4rem;
+
+    @media screen and (max-width: 76em) {
+      font-size: 1.8rem;
+    }
   }
 
   &__search {
@@ -39,6 +43,14 @@
     border: 1px solid vars.$color-primary;
     padding: 1.2rem;
     border-radius: 10rem;
+
+    @media screen and (max-width: 62em) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 32em) {
+      display: none;
+    }
 
     input {
       width: 100%;
@@ -93,14 +105,14 @@
   }
 }
 
-@media screen and (max-width: 42em) {
+@media screen and (max-width: 45em) {
   .nav {
     &__search {
       width: 50%;
     }
 
     &__actions {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: -100%;
       height: 100vh;

@@ -1,0 +1,228 @@
+@use '../abstracts/variables' as vars;
+
+body {
+  background-color: vars.$color-checkout-body;
+}
+
+.checkout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  margin-top: 4rem;
+  gap: 4rem;
+
+  @media screen and (max-width: 56em) {
+    width: 80%;
+    grid-template-columns: 1fr;
+    margin: 4rem auto;
+  }
+
+  @media screen and (max-width: 40em) {
+    width: 90%;
+  }
+
+  &__delivery-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  &__header {
+    font-size: 2rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    background-color: vars.$color-white;
+    padding: 2rem;
+  }
+
+  &__label {
+    display: block;
+    padding-bottom: 0.8rem;
+    font-size: 1.6rem;
+  }
+
+  &__input {
+    width: 100%;
+    border: 1px solid vars.$color-light;
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+
+    &-row {
+      display: flex;
+      gap: 2rem;
+
+      @media screen and (max-width: 33em) {
+        flex-direction: column;
+      }
+    }
+
+    &-group {
+      flex: 1;
+    }
+
+    &:focus {
+      border-color: vars.$color-primary-light;
+      outline: none;
+    }
+  }
+
+  &__payment-method {
+    display: flex;
+    gap: 4rem;
+
+    @media screen and (max-width: 33em) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  &__option {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: normal;
+  }
+
+  &__gifts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  &__gift-options {
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  &__gift-option {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+
+    label {
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    &-input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+
+      &:checked + .checkout__toggle-label {
+        background-color: vars.$color-primary;
+      }
+
+      &:checked + .checkout__toggle-label::before {
+        transform: translateX(1.6rem);
+      }
+    }
+
+    &-label {
+      position: relative;
+      width: 3.6rem;
+      height: 2rem;
+      background-color: vars.$color-secondary-dark;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: background-color 0.4s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        height: 1.4rem;
+        width: 1.4rem;
+        left: 0.3rem;
+        bottom: 0.3rem;
+        background-color: vars.$color-white;
+        border-radius: 50%;
+        transition: transform 0.4s;
+      }
+    }
+  }
+
+  &__input--error {
+    border-color: vars.$color-red;
+  }
+
+  &__btn {
+    align-self: flex-end;
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    background-color: vars.$color-secondary-dark;
+
+    &:not(:disabled) {
+      background-color: vars.$color-dark;
+      color: vars.$color-white;
+      cursor: pointer;
+    }
+  }
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    background-color: vars.$color-white;
+    padding: 2rem;
+    font-size: 1.6rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  &__link {
+    align-self: center;
+    padding: 0.8rem 1.4rem;
+    border-radius: 0.6rem;
+    font-size: 1.6rem;
+    background-color: vars.$color-primary;
+    color: vars.$color-white;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background-color: vars.$color-primary-light;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

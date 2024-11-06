@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <script type="module" src="js/toggleMune.js" defer></script>
+    <script type="module" src="js/modal.js" defer></script>
     <script type="module" src="js/app.js" defer></script>
     <title>Book Shop</title>
   </head>
@@ -14,14 +15,14 @@
     <header id="header" class="header">
       <div class="header__top">
         <div class="container header__contacts">
-          <a href="" class="header__contacts-social">
+          <a href="https://t.me/javlonbek_0405" class="header__contacts-social">
             <i class="fa-brands fa-telegram header__social-icon"></i>
             <span class="header__social-text">Telegram</span>
           </a>
 
-          <a href="tel: +123456798" class="header__contacts-phone">
+          <a href="tel: +998900048114" class="header__contacts-phone">
             <i class="fa-solid fa-phone header__phone-icon"></i>
-            <span class="header__phone-text">+13456798</span>
+            <span class="header__phone-text">+998 90 004 81 14</span>
           </a>
         </div>
       </div>
@@ -58,6 +59,10 @@
 
     <section class="hero" id="hero">
       <div class="container">
+        <div class="mobile-search container">
+          <input type="search" name="bookName" id="bookName" placeholder="Search" />
+        </div>
+
         <div class="hero__content">
           <div class="hero__header">
             <h2 class="hero__title">Discover a World of Books at Your Fingertips!</h2>
@@ -75,17 +80,19 @@
     <!--==================== SECTION MAIN====================-->
 
     <main class="main container">
-      <section class="catalog" id="catalog">
-        <h2 class="catalog__title">Book Catalog</h2>
-        <div class="books" id="books"></div>
-      </section>
+      <div class="main-section">
+        <div class="catalog" id="catalog">
+          <h2 class="catalog__title">Book Catalog</h2>
+          <div class="books" id="books"></div>
+        </div>
 
-      <aside class="cart" id="cart">
-        <h2 class="cart__header">Your cart</h2>
-        <div class="cart__items" id="cart-items"></div>
-        <p class="cart__total" id="cart-total">Total $0</p>
-        <a href="#" class="cart__order">Confirm order</a>
-      </aside>
+        <aside class="cart" id="cart">
+          <h2 class="cart__header">Your cart</h2>
+          <div class="cart__items" id="cart-items"></div>
+          <p class="cart__total hidden" id="cart-total">Total $0</p>
+          <a href="pages/checkout.html" class="cart__order hidden">Confirm order</a>
+        </aside>
+      </div>
     </main>
 
     <!--==================== MODAL ====================-->

@@ -2,13 +2,20 @@
 
 .hero {
   padding-block: 3rem;
-  height: 45rem;
 
   &__content {
     display: flex;
     justify-content: space-between;
     background-color: vars.$color-secondary;
     border-radius: 1.4rem;
+
+    @media screen and (max-width: 53em) {
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: 32em) {
+      display: none;
+    }
   }
 
   &__header {
@@ -17,18 +24,80 @@
     gap: 3rem;
     flex-basis: 62%;
     padding: 4rem;
+
+    @media screen and (max-width: 53em) {
+      width: 80%;
+      align-self: center;
+      padding: 2rem;
+    }
+
+    @media screen and (max-width: 40em) {
+      width: 90%;
+    }
   }
 
   &__title {
     font-size: 5.4rem;
+
+    @media screen and (max-width: 76em) {
+      font-size: 4.4rem;
+    }
+
+    @media screen and (max-width: 53em) {
+      font-size: 3.2rem;
+    }
+
+    @media screen and (max-width: 40em) {
+      font-size: 2.4rem;
+    }
   }
 
   &__subtitle {
     font-size: 2.4rem;
     font-weight: 500;
+
+    @media screen and (max-width: 76em) {
+      font-size: 1.8rem;
+    }
+
+    @media screen and (max-width: 40em) {
+      font-size: 1.6rem;
+    }
   }
 
   &__img {
     flex-basis: 40rem;
+
+    @media screen and (max-width: 53em) {
+      display: none;
+    }
+  }
+}
+
+.mobile-search {
+  display: none;
+  width: 80%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 32em) {
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 10rem;
+    font-size: 1.6rem;
+    font-family: 'Mulish', sans-serif;
+    border: 1px solid vars.$color-primary-light;
+
+    &::placeholder {
+      font-size: 1.6rem;
+      font-family: 'Mulish', sans-serif;
+    }
+
+    &::-webkit-search-cancel-button {
+      cursor: pointer;
+    }
   }
 }
