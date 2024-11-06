@@ -4,7 +4,7 @@ const modal = document.querySelector('.modal');
 const booksEl = document.getElementById('books');
 
 export async function fetchBooks() {
-  const response = await fetch('../../books.json');
+  const response = await fetch('./data/books.json');
   const data = await response.json();
   return data;
 }
