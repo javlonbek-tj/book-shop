@@ -40,9 +40,14 @@
   &__logo {
     font-family: 'DynaPuff', sans-serif;
     font-size: 2.4rem;
+    color: vars.$color-primary;
 
     @media screen and (max-width: 76em) {
       font-size: 1.8rem;
+    }
+
+    &:visited {
+      color: vars.$color-primary;
     }
   }
 

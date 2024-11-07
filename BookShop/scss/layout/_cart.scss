@@ -16,8 +16,7 @@
   background-color: vars.$color-secondary;
 
   @media screen and (max-width: 45em) {
-    width: 80%;
-    margin: 0 auto;
+    display: none;
   }
 
   &__header {
