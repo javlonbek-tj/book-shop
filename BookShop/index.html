@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/main.css" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="assets/icons/favicon.ico"
-    />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon.ico" />
     <script type="module" src="js/toggleMune.js" defer></script>
     <script type="module" src="js/modal.js" defer></script>
     <script type="module" src="js/app.js" defer></script>
@@ -18,7 +13,7 @@
   </head>
   <body>
     <!--==================== HEADER ====================-->
-    <header id="header" class="header">
+    <header id="header" class="header header__sticky">
       <div class="header__top">
         <div class="container header__contacts">
           <a href="https://t.me/javlonbek_0405" class="header__contacts-social">
@@ -35,7 +30,7 @@
 
       <!-- Navbar -->
       <nav class="container nav">
-        <a href="" class="nav__logo"><h1>Book-Shop</h1></a>
+        <a href="#" class="nav__logo"><h1>Book-Shop</h1></a>
 
         <div class="nav__search">
           <input type="search" class="search-bar" placeholder="Search" />
@@ -73,12 +68,9 @@
 
         <div class="hero__content">
           <div class="hero__header">
-            <h2 class="hero__title">
-              Discover a World of Books at Your Fingertips!
-            </h2>
+            <h2 class="hero__title">Discover a World of Books at Your Fingertips!</h2>
             <h3 class="hero__subtitle">
-              Dive into stories, expand your knowledge, and unlock endless
-              adventures—all in one place.
+              Dive into stories, expand your knowledge, and unlock endless adventures—all in one place.
             </h3>
           </div>
           <div class="hero__img">
@@ -101,9 +93,7 @@
           <h2 class="cart__header">Your cart</h2>
           <div class="cart__items" id="cart-items"></div>
           <p class="cart__total hidden" id="cart-total">Total $0</p>
-          <a href="pages/checkout.html" class="cart__order hidden"
-            >Confirm order</a
-          >
+          <a href="pages/checkout.html" class="cart__order hidden">Confirm order</a>
         </aside>
       </div>
     </main>

@@ -96,11 +96,15 @@ a {
 .nav__logo {
   font-family: "DynaPuff", sans-serif;
   font-size: 2.4rem;
+  color: #3a3a5f;
 }
 @media screen and (max-width: 76em) {
   .nav__logo {
     font-size: 1.8rem;
   }
+}
+.nav__logo:visited {
+  color: #3a3a5f;
 }
 .nav__search {
   width: 30%;
@@ -203,6 +207,8 @@ a {
 @media screen and (max-width: 32em) {
   .hero {
     padding-block: 2rem;
+    position: sticky;
+    top: 8rem;
   }
 }
 .hero__content {
@@ -435,8 +441,7 @@ a {
 }
 @media screen and (max-width: 45em) {
   .cart {
-    width: 80%;
-    margin: 0 auto;
+    display: none;
   }
 }
 .cart__header {

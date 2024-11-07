@@ -5,6 +5,8 @@
 
   @media screen and (max-width: 32em) {
     padding-block: 2rem;
+    position: sticky;
+    top: 8rem;
   }
 
   &__content {
