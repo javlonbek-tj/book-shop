@@ -389,6 +389,7 @@ a {
 .book__author {
   font-size: 1.6rem;
   font-weight: normal;
+  min-height: 4rem;
 }
 .book__price {
   font-size: 2rem;
