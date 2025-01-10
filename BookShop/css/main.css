@@ -57,10 +57,6 @@ a {
   display: none;
 }
 
-.no-scroll {
-  overflow: hidden;
-}
-
 /* Header */
 .header {
   min-height: 10rem;

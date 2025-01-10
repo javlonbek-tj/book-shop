@@ -1,40 +1,48 @@
-import { fetchBooks } from './modal.js';
-
 // ==================== RENDERING BOOK ELEMENT ====================
 
 function truncateTitle(length, title) {
-  return title.length > length ? title.slice(0, length) + '...' : title;
+  return title.length > length ? title.slice(0, length) + "..." : title;
 }
 
-const searchBars = document.querySelectorAll('.search-bar');
+async function fetchBooks() {
+  const response = await fetch("./data/books.json");
+  const data = await response.json();
+  return data;
+}
 
-async function renderBooks(searchQuery = '') {
-  const books = await fetchBooks();
+export let cashedBooks = null;
 
-  const booksContainer = document.getElementById('books');
-  booksContainer.innerHTML = '';
+const searchBars = document.querySelectorAll(".search-bar");
+
+async function renderBooks(searchQuery = "") {
+  if (!cashedBooks) {
+    cashedBooks = await fetchBooks();
+  }
+
+  const booksContainer = document.getElementById("books");
+  booksContainer.innerHTML = "";
 
   const fragment = document.createDocumentFragment();
 
-  const filteredBooks = books.filter((book) =>
+  const filteredBooks = cashedBooks.filter((book) =>
     book.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   filteredBooks.forEach((book) => {
-    const bookItem = document.createElement('div');
-    bookItem.classList.add('book');
-    bookItem.setAttribute('draggable', 'true');
-    bookItem.setAttribute('data-id', book.id);
+    const bookItem = document.createElement("div");
+    bookItem.classList.add("book");
+    bookItem.setAttribute("draggable", "true");
+    bookItem.setAttribute("data-id", book.id);
 
     const fullImagePath = `assets/images/${book.imageLink}`;
 
-    bookItem.addEventListener('dragstart', (event) => {
+    bookItem.addEventListener("dragstart", (event) => {
       const bookData = {
         ...book,
         imageLink: fullImagePath,
       };
-      event.dataTransfer.setData('bookData', JSON.stringify(bookData));
-      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData("bookData", JSON.stringify(bookData));
+      event.dataTransfer.effectAllowed = "move";
     });
 
     const truncatedTitle = truncateTitle(38, book.title);
@@ -61,7 +69,7 @@ async function renderBooks(searchQuery = '') {
 renderBooks();
 
 searchBars.forEach((searchBar) => {
-  searchBar.addEventListener('input', (e) => {
+  searchBar.addEventListener("input", (e) => {
     const searchQuery = e.target.value;
     renderBooks(searchQuery);
   });
@@ -69,14 +77,14 @@ searchBars.forEach((searchBar) => {
 
 // ==================== ADDING TO CART ====================
 
-const bookCatalogContainer = document.getElementById('books');
-const cartSection = document.getElementById('cart');
-const cartsEl = document.getElementById('cart-items');
-const cartTotal = document.getElementById('cart-total');
-const cartOrderBtn = document.querySelector('.cart__order');
+const bookCatalogContainer = document.getElementById("books");
+const cartSection = document.getElementById("cart");
+const cartsEl = document.getElementById("cart-items");
+const cartTotal = document.getElementById("cart-total");
+const cartOrderBtn = document.querySelector(".cart__order");
 
 function addToCart(book) {
-  let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   const existedCartProductIndex = cartProducts.findIndex(
     (cart) => cart.id.toString() === book.id.toString()
@@ -98,7 +106,7 @@ function addToCart(book) {
     cartProducts.push(newCartProduct);
   }
 
-  localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+  localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
 
   renderCarts();
 }
@@ -106,14 +114,14 @@ function addToCart(book) {
 // ==================== RENDER CARTS ====================
 
 function renderCarts() {
-  let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
-  cartsEl.innerHTML = '';
+  cartsEl.innerHTML = "";
   let cartTotalSum = 0;
 
   if (cartProducts.length === 0) {
-    cartTotal.classList.add('hidden');
-    cartOrderBtn.classList.add('hidden');
+    cartTotal.classList.add("hidden");
+    cartOrderBtn.classList.add("hidden");
     return;
   }
 
@@ -122,9 +130,9 @@ function renderCarts() {
 
     cartTotalSum += book.price * book.qty;
 
-    const cartItem = document.createElement('div');
-    cartItem.classList.add('cart__item');
-    cartItem.setAttribute('data-id', book.id);
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart__item");
+    cartItem.setAttribute("data-id", book.id);
 
     const truncatedTitle = truncateTitle(38, book.title);
 
@@ -145,12 +153,12 @@ function renderCarts() {
       </div>
   `;
 
-    cartItem.querySelector('.cart__remove').addEventListener('click', () => {
+    cartItem.querySelector(".cart__remove").addEventListener("click", () => {
       cartProducts = cartProducts.filter(
         (cartProduct) => cartProduct.id.toString() !== book.id.toString()
       );
 
-      localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+      localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
 
       renderCarts();
     });
@@ -161,23 +169,23 @@ function renderCarts() {
   });
 
   cartTotal.textContent = `Total: $${cartTotalSum}`;
-  cartTotal.classList.remove('hidden');
-  cartOrderBtn.classList.remove('hidden');
+  cartTotal.classList.remove("hidden");
+  cartOrderBtn.classList.remove("hidden");
 }
 
 renderCarts();
 
-bookCatalogContainer.addEventListener('click', (event) => {
-  if (event.target.classList.contains('book__btn--add')) {
-    const bookElement = event.target.closest('.book');
+bookCatalogContainer.addEventListener("click", (event) => {
+  if (event.target.classList.contains("book__btn--add")) {
+    const bookElement = event.target.closest(".book");
     const book = {
       id: bookElement.dataset.id,
-      title: bookElement.querySelector('.book__title').textContent,
-      author: bookElement.querySelector('.book__author').textContent,
+      title: bookElement.querySelector(".book__title").textContent,
+      author: bookElement.querySelector(".book__author").textContent,
       price: bookElement
-        .querySelector('.book__price')
-        .textContent.replace('Price: $', ''),
-      imageLink: bookElement.querySelector('.book__image').src,
+        .querySelector(".book__price")
+        .textContent.replace("Price: $", ""),
+      imageLink: bookElement.querySelector(".book__image").src,
     };
 
     addToCart(book);
@@ -186,13 +194,13 @@ bookCatalogContainer.addEventListener('click', (event) => {
 
 // ==================== DRAG AND DROP ====================
 
-cartSection.addEventListener('dragover', (event) => {
+cartSection.addEventListener("dragover", (event) => {
   event.preventDefault();
 });
 
-cartSection.addEventListener('drop', (event) => {
+cartSection.addEventListener("drop", (event) => {
   event.preventDefault();
-  const bookData = event.dataTransfer.getData('bookData');
+  const bookData = event.dataTransfer.getData("bookData");
   if (bookData) {
     const book = JSON.parse(bookData);
     addToCart(book);
@@ -201,19 +209,19 @@ cartSection.addEventListener('drop', (event) => {
 
 // ============== INCREASING AND DECREASING CART QUANTITIES ==============
 
-cartsEl.addEventListener('click', (e) => {
-  if (e.target.closest('.cart__icon--plus')) {
+cartsEl.addEventListener("click", (e) => {
+  if (e.target.closest(".cart__icon--plus")) {
     e.preventDefault();
-    const cartProduct = e.target.closest('.cart__item');
+    const cartProduct = e.target.closest(".cart__item");
     if (cartProduct) {
       increaseQty(cartProduct.dataset.id);
       renderCarts();
     }
   }
 
-  if (e.target.closest('.cart__icon--minus')) {
+  if (e.target.closest(".cart__icon--minus")) {
     e.preventDefault();
-    const cartProduct = e.target.closest('.cart__item');
+    const cartProduct = e.target.closest(".cart__item");
     if (cartProduct) {
       decreaseQty(cartProduct.dataset.id);
       renderCarts();
@@ -222,7 +230,7 @@ cartsEl.addEventListener('click', (e) => {
 });
 
 function increaseQty(cartId) {
-  let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   cartProducts = cartProducts.map((cartProduct) => {
     if (cartProduct.id.toString() === cartId.toString()) {
@@ -231,11 +239,11 @@ function increaseQty(cartId) {
     return cartProduct;
   });
 
-  localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+  localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
 }
 
 function decreaseQty(cartId) {
-  let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   cartProducts = cartProducts.map((cartProduct) => {
     if (cartProduct.id.toString() === cartId.toString()) {
@@ -244,5 +252,5 @@ function decreaseQty(cartId) {
     return cartProduct;
   });
 
-  localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+  localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
 }
